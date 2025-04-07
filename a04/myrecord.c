@@ -30,7 +30,13 @@
  }
  
  int import_data(FILE *fp, RECORD *dataset) {
- // your code
+
+   int count = 0;
+   while (fscanf(fp, "%s %f", &dataset[count].name && &dataset[count].score == 2 )){
+      count ++;
+
+   }
+   return count;
  }
  
  STATS process_data(RECORD *dataset, int count) {    
