@@ -40,8 +40,21 @@
  }
  
  STATS process_data(RECORD *dataset, int count) {    
- // your code
- }
+
+   float total = 0;
+   STATS stats;
+   stats.count = count;
+   stats.mean = 0;
+   stats.median = 0;
+   stats.stddev = 0;
+
+   for(int i = 0; i < count; i++){
+      total += dataset[i].score;
+   }
+
+   
+
+}
  
  
  int report_data(FILE *fp, RECORD *dataset, STATS stats) {
