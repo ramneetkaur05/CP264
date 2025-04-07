@@ -63,19 +63,20 @@
  
  void my_sort(void *a[], int left, int right, int (*cmp)(void*, void*) )
  { 
-     int i,j, min;
-     for(i = left; i<=right;i++){
-          min = i;
-          for(j= i+1; j <= right; j++){
-               if (cmp(a[min], a[j])){
-                    min = j;
+     if(left < right){
+          int i = left +1;
+          int j = right;
+
+          while(i<=j){
+               while (i<= right && cmp(a[i], a[left]) <= 0) i++;
+               while (j >= left && cmp(a[j], a[left]) > 0) j--;
+               if (i < j){
+                    swap(&a[i], &a[j]);
                }
-
           }
-          if(min != i){
-               swap(min, i);
-          }
-
+          swap(&a[left], &a[j]);
+          quick_sort(a, left, j-1);
+          quick_sort(a, j+1, right);
      }
  }
  
