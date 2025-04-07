@@ -31,12 +31,17 @@
  
  int import_data(FILE *fp, RECORD *dataset) {
 
-   int count = 0;
-   while (fscanf(fp, "%s %f", &dataset[count].name && &dataset[count].score == 2 )){
-      count ++;
+   char line[100];
+   int i = 0; //records counter
 
+   while(fgets(line,sizeof(line),fp) != NULL){
+      // use sscanf() get name string to dataset[i].name, float score to dataset[i].score
+      sscanf(line, "%[^, ],%f", dataset[i].name, &dataset[i].score);
+      i++;
    }
-   return count;
+   return i;
+
+
  }
  
  STATS process_data(RECORD *dataset, int count) {    
@@ -66,7 +71,7 @@
 
    float sum2 = 0;
    for(int i = 0; i < count; i++){
-      sum2 += pow(scores[i] - stats.mean, 2); //standard deviation^2
+      sum2 += (scores[i] - stats.mean)*(scores[i] - stats.mean); //standard deviation^2
    }
    stats.stddev = sqrt(sum2/count); // standard deviation
    free(scores);
