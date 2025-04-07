@@ -63,7 +63,8 @@
  
  void my_sort(void *a[], int left, int right, int (*cmp)(void*, void*) )
  { 
-     if(left < right){
+     if(left >= right) return;
+     
           int i = left +1;
           int j = right;
 
@@ -75,8 +76,7 @@
                }
           }
           swap(&a[left], &a[j]);
-          quick_sort(a, left, j-1);
-          quick_sort(a, j+1, right);
-     }
+          my_sort(a, left, j-1, cmp);
+          my_sort(a, j+1, right, cmp);
  }
  
