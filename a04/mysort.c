@@ -45,9 +45,9 @@
      
      if(right <= left) return;
 
-     int pivot = partition(a[], left, right);
-     quick_sort(a[], left, pivot -1);
-     quick_sort(a[], pivot +1, right);
+     int pivot = partition(a, left, right);
+     quick_sort(a, left, pivot -1);
+     quick_sort(a, pivot +1, right);
 
  }
 
@@ -69,6 +69,19 @@
  
  void my_sort(void *a[], int left, int right, int (*cmp)(void*, void*) )
  { 
- // your code
+     int i,j, min;
+     for(i = left; i<=right;i++){
+          min = i;
+          for(j= i+1; j <= right; j++){
+               if (cmp(a[min], a[j])){
+                    min = j;
+               }
+
+          }
+          if(min != i){
+               swap(min, i);
+          }
+
+     }
  }
  
