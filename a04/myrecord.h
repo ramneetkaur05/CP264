@@ -37,7 +37,7 @@ typedef struct {
 /*
  * Convert a percentage grade to letter grade defined by percentage ranges
  * A+=[90, 100], A=[85, 90), A-=[80, 85), B+=[77, 80), B=[73, 77) B=[70, 73),
- * C+=[67, 70), C=[63, 77), C-=[60, 63), D+=[57,60),D=[53,57),D=[50,53), F=[0,50).
+ * C+=[67, 70), C=[63, 67), C-=[60, 63), D+=[57,60),D=[53,57),D-=[50,53), F=[0,50).
  *
  * @param score -  percetage grade.
  *
