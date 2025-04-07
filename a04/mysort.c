@@ -29,7 +29,7 @@
      for(i = left; i<=right;i++){
           min = i;
           for(j= i+1; j <= right; j++){
-               if (a[min] > a[j]){
+               if (cmp(a[j], a[min] < 0)){ // if j < min
                     min = j;
                }
 
@@ -43,28 +43,22 @@
  
  void quick_sort(void *a[], int left, int right){
      
-     if(right <= left) return;
+     if(left < right){
+          int i = left +1;
+          int j = right;
 
-     int pivot = partition(a, left, right);
-     quick_sort(a, left, pivot -1);
-     quick_sort(a, pivot +1, right);
-
- }
-
- static int partition(void *a[], int left, int right){
-     int pivot = a[right];
-     int i = left -1;
-
-     for(int j = left; j<= right - 1; j++){
-          if(a[j] < pivot) {
-               i++;
-               swap(j,i);
+          while(i<=j){
+               while (i<= right && cmp(a[i], a[left]) <= 0) i++;
+               while (j >= left && cmp(a[j], a[left]) > 0) j--;
+               if (i < j){
+                    swap(&a[i], &a[j]);
+               }
           }
+          swap(&a[left], &a[j]);
+          quick_sort(a, left, j-1);
+          quick_sort(a, j+1, right);
      }
-     i++;
-     swap(a[right], i);
 
-     return i;
  }
  
  void my_sort(void *a[], int left, int right, int (*cmp)(void*, void*) )
