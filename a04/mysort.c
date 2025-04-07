@@ -41,9 +41,30 @@
      }
  }
  
- void quick_sort(void *a[], int left, int right)
- { 
- // your code
+ void quick_sort(void *a[], int left, int right){
+     
+     if(right <= left) return;
+
+     int pivot = partition(a[], left, right);
+     quick_sort(a[], left, pivot -1);
+     quick_sort(a[], pivot +1, right);
+
+ }
+
+ static int partition(void *a[], int left, int right){
+     int pivot = a[right];
+     int i = left -1;
+
+     for(int j = left; j<= right - 1; j++){
+          if(a[j] < pivot) {
+               i++;
+               swap(j,i);
+          }
+     }
+     i++;
+     swap(a[right], i);
+
+     return i;
  }
  
  void my_sort(void *a[], int left, int right, int (*cmp)(void*, void*) )
