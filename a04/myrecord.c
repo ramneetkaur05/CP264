@@ -76,6 +76,12 @@
  
  
  int report_data(FILE *fp, RECORD *dataset, STATS stats) {
- // your code
- }
+   
+   int n = stats.count;
+
+   if(n<1) return 0;
+
+
+
+  }
  
