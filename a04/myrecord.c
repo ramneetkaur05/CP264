@@ -73,13 +73,41 @@
    return stats;
 
 }
+
+static int cmp1(void *x, void *y) {
+   float b = ((RECORD*) x)->score;
+   float a = ((RECORD*) y)->score;
+   if (a > b) return 1;
+   else if (a < b) return -1;
+   else return 0;
+   }
  
  
  int report_data(FILE *fp, RECORD *dataset, STATS stats) {
-   
-   int n = stats.count;
 
-   if(n<1) return 0;
+   int n = stats.count;
+   if (n<1) return 0;
+
+   RECORD *p[n];
+   for (int i=0; i<n; i++){
+      p[i] = &dataset[i];
+   }
+
+   my_sort((void*)p, 0, n-1, cmp1);
+   for (int i = 0; i < n; i++) {
+      // write to file the record data by pointer p[i],
+      fprintf(fp, "%s:%.1f,%s\n", 
+         p[i]->name, 
+         p[i]->score, 
+         grade(p[i]->score).letter_grade);
+   }
+   
+   return 1;
+
+
+
+
+
 
 
 
