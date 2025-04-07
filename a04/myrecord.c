@@ -42,17 +42,35 @@
  STATS process_data(RECORD *dataset, int count) {    
 
    float total = 0;
-   STATS stats;
+   STATS stats; //initialize stats
    stats.count = count;
    stats.mean = 0;
    stats.median = 0;
    stats.stddev = 0;
 
+   float *scores = (float*)malloc(count * sizeof(float));
+
    for(int i = 0; i < count; i++){
-      total += dataset[i].score;
+      total += dataset[i].score; // add up all the scores
+      scores[i] = dataset[i].score;
    }
 
+   stats.mean = total /count; // calc. the mean
    
+   select_sort((void*)scores, 0,count-1);
+   if(count % 2 == 0){
+      stats.median = (scores[count/2-1] + scores[count/2])/2; //mean if theres an even number of scores
+   } else {
+      stats.median = scores[count/2]; // mena if theres an odd number of scores
+   }
+
+   float sum2 = 0;
+   for(int i = 0; i < count; i++){
+      sum2 += pow(scores[i] - stats.mean, 2); //standard deviation^2
+   }
+   stats.stddev = sqrt(sum2/count); // standard deviation
+   free(scores);
+   return stats;
 
 }
  
