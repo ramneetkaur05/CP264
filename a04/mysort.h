@@ -1,5 +1,5 @@
 /*
- * file: mysort.c
+ * file: mysort.h
  * author: Ramneet Kaur Pannu
  * date: 6/04/25
  */ 
