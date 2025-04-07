@@ -26,16 +26,16 @@
  void select_sort(void *a[], int left, int right)
  {
      int i,j, min;
-     for(i = left; i<=right;i++){
+     for(i = left; i<=right;++i){
           min = i;
-          for(j= i+1; j <= right; j++){
-               if (cmp(a[j], a[min] < 0)){ // if j < min
+          for(j= i+1; j <= right; ++j){
+               if (cmp(a[j], a[min]) < 0){ // if j < min
                     min = j;
                }
 
           }
-          if(min != i){
-               swap(min, i);
+          if(i != min){ // swap min with i (what the flip is i?? Pointer??)
+               swap(&a[i], &a[min]);
           }
 
      }
