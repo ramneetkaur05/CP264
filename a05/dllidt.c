@@ -7,11 +7,24 @@
  #include "dllist.h"
  
  NODE *dll_node(char data) {
- // your code
+    NODE *new_node = (NODE*)malloc(sizeof(NODE));
+    new_node->data = data;
+    new_node->prev = NULL;
+    new_node->next = NULL;
+    return new_node;
  }
  
  void dll_insert_start(DLL *dllp, NODE *np) {
- // your code
+    if (dllp == NULL) return;
+    if (dllp->start == NULL){
+        dllp->start = np;
+        dllp->end = np;
+    } else {
+        dllp->start->prev = np;
+        np->next = dllp->start;
+    }
+    dllp->end = np;
+    np->next = NULL;
  }
  
  void dll_insert_end(DLL *dllp, NODE *np) {
