@@ -42,8 +42,8 @@
         p = p->next;
     }
     if (prev == NULL){ //if its empty, insert in the begining
+        np->next = sllp->start;
         sllp->start = np;
-        np->next = NULL;
     }else{
         prev->next = np; //otherwise, insert in between pointer and previous
         np->next = NULL;
