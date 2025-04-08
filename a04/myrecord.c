@@ -101,7 +101,7 @@ static int cmp1(void *x, void *y) {
    my_sort((void*)p, 0, n-1, cmp1);
    for (int i = 0; i < n; i++) {
       // write to file the record data by pointer p[i],
-      fprintf(fp, "%s:%.1f,%s,%s\n", 
+      fprintf(fp, "%s:%.1f,%s\n", 
          p[i]->name, 
          p[i]->score,
          grade(p[i]->score).letter_grade);
