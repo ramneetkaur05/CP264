@@ -31,7 +31,7 @@
  
  int import_data(FILE *fp, RECORD *dataset) {
 
-   char line[100];
+   char line[100000];
    int i = 0; //records counter
 
    char delimiters[] = ",\n\r";
