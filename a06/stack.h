@@ -1,5 +1,5 @@
 /*
- * file: queue.h
+ * file: stack.h
  * author: Ramneet Kaur Pannu
  * date: 8/04/25
  */ 
