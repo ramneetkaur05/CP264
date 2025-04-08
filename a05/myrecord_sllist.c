@@ -12,7 +12,18 @@
  
  
  NODE *sll_search(SLL *sllp, char *name) {
- // your code
+
+    NODE *p = NULL, *np = sllp->start;
+
+    while(np != NULL){
+        if (strcmp(np->data.name, name) == 0){
+            np = p;
+        } else{
+            np = np->next;
+        }
+    }
+    return p;
+
  }
  
  void sll_insert(SLL *sllp, char *name, float score) {
