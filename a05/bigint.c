@@ -50,6 +50,9 @@
             b=ptr2->data;
             ptr2->prev;
         }
+        s = a+b+carry;
+        carry = s/10;
+        dll_insert_start(&sum, dll_node(s%10));
 
     }
 
