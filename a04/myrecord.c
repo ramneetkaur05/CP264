@@ -71,9 +71,9 @@
 
    float sum2 = 0;
    for(int i = 0; i < count; i++){
-      sum2 += (scores[i] - stats.mean)*(scores[i] - stats.mean); //standard deviation^2
+      sum2 += (scores[i] - stats.mean)*(scores[i] - stats.mean); //variance
    }
-   stats.stddev = sqrt(sum2/count); // standard deviation
+   stats.stddev = sqrt(sum2 / count); // standard deviation
    free(scores);
    return stats;
 
@@ -101,20 +101,13 @@ static int cmp1(void *x, void *y) {
    my_sort((void*)p, 0, n-1, cmp1);
    for (int i = 0; i < n; i++) {
       // write to file the record data by pointer p[i],
-      fprintf(fp, "%s:%.1f,%s\n", 
+      fprintf(fp, "%s:%.1f,%s,%s\n", 
          p[i]->name, 
-         p[i]->score, 
+         p[i]->score,
          grade(p[i]->score).letter_grade);
-   }
+      }
    
    return 1;
-
-
-
-
-
-
-
 
   }
  
