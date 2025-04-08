@@ -26,9 +26,8 @@
     } else{
         qp->front->next = qp->front;
         qp->length--;
-        return temp;
-
     }
+    return temp;
  }
  
  void clean_queue(QUEUE *qp) {
