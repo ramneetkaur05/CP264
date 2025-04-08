@@ -70,5 +70,15 @@
  }
  
  void dll_clean(DLL *dllp) {
- // your code
+    if (dllp == NULL) return;
+
+    NODE *temp, *ptr = dllp->start;
+    while(ptr != NULL){
+        temp = ptr;
+        ptr = ptr->next;
+        free(temp);
+        dllp->length--;
+    }
+    dllp->start = NULL;
+    dllp->end = NULL;
  }
