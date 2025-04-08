@@ -23,12 +23,21 @@
         dllp->start->prev = np;
         np->next = dllp->start;
     }
-    dllp->end = np;
-    np->next = NULL;
+    dllp->start= np; 
+    np->prev = NULL;
  }
  
  void dll_insert_end(DLL *dllp, NODE *np) {
- // your code
+    if (dllp == NULL) return;
+    if(dllp->start == NULL){
+        dllp->start = np;
+        dllp->end = np;
+    } else {
+        dllp->end->next = np;
+        np->prev = dllp->end;
+    }
+    dllp->end = np;
+    np->next = NULL;
  }
  
  void dll_delete_start(DLL *dllp) {
