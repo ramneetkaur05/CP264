@@ -11,11 +11,9 @@
     if (qp->length == 0){
         qp->front = np;
         qp->rear = np;
-        qp->front->next = qp->rear->next = NULL;
     } else {
         qp->rear->next = np;
         qp->rear = np;
-        qp->rear->next = NULL;
     }
  }  
  
