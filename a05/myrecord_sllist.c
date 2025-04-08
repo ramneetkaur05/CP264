@@ -13,14 +13,14 @@
  
  NODE *sll_search(SLL *sllp, char *name) {
 
-    NODE *np = sllp->start;
+    NODE *ptr = sllp->start;
 
-    while(np != NULL){
-        if (strcmp(np->data.name, name) == 0){
-            return np;
-        } else{
-            np = np->next;
-        }
+    while(ptr != NULL){
+        if (strcmp(ptr->data.name, name) == 0){
+            return ptr;
+        } 
+        ptr = ptr->next;
+        
     }
     return NULL;
 
