@@ -36,7 +36,7 @@
 
    while(fgets(line,sizeof(line),fp) != NULL){
       // use sscanf() get name string to dataset[i].name, float score to dataset[i].score
-      sscanf(line, "%[^, ],%f", dataset[i].name, &dataset[i].score);
+      sscanf(line, "[^, ],%f", dataset[i].name, &dataset[i].score);
       i++;
    }
    return i;
