@@ -63,5 +63,25 @@
  }
  
  BIGINT bigint_fibonacci(int n) {
- // your code
+    BIGINT f1 = bigint("0");
+    BIGINT f2 = bigint("1");
+    BIGINT fn = bigint(NULL);
+
+    if (n == 0) {
+      return f1;
+    } else if (n == 1){
+      return f2;
+    } else {
+      for(int i = 2; 1<n; i++){
+        fn = bigint_add(f1, f2);
+        dll_clean(&f1);
+        f1=f2;
+        f2=fn;
+      }
+      return fn;
+    }
+
+
+
+
  }
