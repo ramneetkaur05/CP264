@@ -46,7 +46,7 @@
         sllp->start = np;
     }else{
         prev->next = np; //otherwise, insert in between pointer and previous
-        np->next = NULL;
+        np->next = p;
     }
     sllp->length++; //update the sll length!
 
@@ -55,14 +55,21 @@
  
  int sll_delete(SLL *sllp, char *name) {
 
-    NODE *p = sllp->start;
-    while (p!=NULL){ //while the pointer != NULL and the name in the array does not match the name given
-        p = p->next;
-        if (p->data.name == name) {
-            p = p->next;
-            free(p);
+    NODE *prev = NULL, *ptr = sllp->start;
+    while (ptr!=NULL){ //while the pointer != NULL and the name in the array does not match the name given
+        ptr = ptr->next;
+        if (strcmp(ptr->data.name, name) == 0) {
+            if (prev == NULL){
+                sllp->start = ptr->next;
+            }else{
+                prev->next = ptr->next;
+            }
+            free(ptr);
+            sllp->length--;
             return 1;
         }
+        prev = ptr;
+        ptr = ptr->next;
     }
     return 0;
 
