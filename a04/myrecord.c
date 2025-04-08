@@ -32,23 +32,13 @@
  int import_data(FILE *fp, RECORD *dataset) {
 
    char line[1000];
-   int i = 0; //records counter
 
-   //char delimiters[] = ",\n\r";
-   //char *token = NULL;
-
-   while(fgets(line,sizeof(line),fp) != NULL){
-      // use sscanf() get name string to dataset[i].name, float score to dataset[i].score
-      sscanf(line, "%[^, ],%f", dataset[i].name, &dataset[i].score);
-
-      // or use strtok to get name and score.
-      //token = (char *) strtok(line, delimiters);
-      //strcpy(dataset[i].name, token);
-      //token = (char *) strtok(NULL, delimiters);
-      //sscanf(token, "%f", &dataset[i].score); 
-      i++;
-   }
-   return i;
+		int i = 0;
+		while (fgets(line, sizeof(line), fp) != NULL) {
+			sscanf(line, "%[^,], %f", dataset[i].name, &dataset[i].score);
+			i++;
+		}
+		return i;
 
 
  }
