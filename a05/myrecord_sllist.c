@@ -27,8 +27,31 @@
  }
  
  void sll_insert(SLL *sllp, char *name, float score) {
- // your code
- }
+
+    //create a node first
+    NODE *np = (NODE*)malloc(sizeof(NODE));
+    //initialize node
+    strcpy(np->data.name, name);
+    np->data.score = score;
+    np->next = NULL;
+
+    //insert node into SLL
+    NODE *prev = NULL, *p = sllp->start;
+    while (p!=NULL && strcmp(p->data.name, name) < 0){ //while the pointer != NULL and the name in the array does not surpase the name given lexically
+        prev = p;
+        p = p->next;
+    }
+    if (prev == NULL){ //if its empty, insert in the begining
+        sllp->start = np;
+        np->next = NULL;
+    }else{
+        prev->next = np; //otherwise, insert in between pointer and previous
+        np->next = NULL;
+    }
+    sllp->length++; //update the sll length!
+
+
+  }
  
  int sll_delete(SLL *sllp, char *name) {
  // your code
