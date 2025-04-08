@@ -41,11 +41,32 @@
  }
  
  void dll_delete_start(DLL *dllp) {
- // your code
- }
+    if (dllp == NULL) return;
+    NODE *temp = dllp->start;
+    if (dllp->length == 1) {
+        dllp->start = NULL;
+        dllp->end = NULL;
+    } else {
+        dllp->start = dllp->start->next;
+        dllp->start->prev = NULL;
+    }
+    free(temp);
+    dllp->length--;
+  }
  
  void dll_delete_end(DLL *dllp) {
- // your code
+    if (dllp->length == 0) return;
+
+    NODE *temp = dllp->end;
+    if (dllp->length == 1) {
+        dllp->start = NULL;
+        dllp->end = NULL;
+    } else {
+        dllp->end = dllp->end->prev;
+        dllp->end->next = NULL;
+    }
+    free(temp);
+    dllp->length--;
  }
  
  void dll_clean(DLL *dllp) {
