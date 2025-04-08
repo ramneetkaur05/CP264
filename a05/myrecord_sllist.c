@@ -54,7 +54,18 @@
   }
  
  int sll_delete(SLL *sllp, char *name) {
- // your code
+
+    NODE *p = sllp->start;
+    while (p!=NULL){ //while the pointer != NULL and the name in the array does not match the name given
+        p = p->next;
+        if (p->data.name == name) {
+            p = p->next;
+            free(p);
+            return 1;
+        }
+    }
+    return 0;
+
  }
  
  void sll_clean(SLL *sllp) {
