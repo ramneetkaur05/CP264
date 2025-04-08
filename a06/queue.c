@@ -15,6 +15,7 @@
         qp->rear->next = np;
         qp->rear = np;
     }
+    return;
  }  
  
  NODE *dequeue(QUEUE *qp) {
