@@ -53,8 +53,11 @@
         s = a+b+carry;
         carry = s/10;
         dll_insert_start(&sum, dll_node(s%10));
-
     }
+    if (carry > 0){
+        dll_insert_start(&sum, dll_node(carry));
+    }
+    return sum;
 
 
  }
