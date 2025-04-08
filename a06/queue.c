@@ -8,7 +8,7 @@
  #include "queue.h"
  
  void enqueue(QUEUE *qp, NODE *np) {
-    if (qp->length == 0){
+    if (qp->front == NULL){
         qp->front = np;
         qp->rear = np;
     } else {
@@ -22,13 +22,12 @@
  NODE *dequeue(QUEUE *qp) {
     NODE *temp = qp->front;
     if (qp->front == NULL){
-        printf("\nUNDERFLOW!! ABORT! ABORT!");
         return NULL;
     } else{
-        qp->front->next = qp->front;
+        qp->front = qp->front->next;
         qp->length--;
+        return temp;
     }
-    return temp;
  }
  
  void clean_queue(QUEUE *qp) {
