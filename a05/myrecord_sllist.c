@@ -22,6 +22,7 @@
             np = np->next;
         }
     }
+    return NULL;
 
  }
  
