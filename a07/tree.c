@@ -61,13 +61,12 @@
     enqueue(&q, root);
     while(q.front){
         TNODE *p = dequeue(&q);
-        if (p->left->data == val) {
-            return p;
-        }
-        if (p->right->data == val){
-            return p;
-        }
+        if (p->data == val) return p;
+
+        if (p->left) enqueue(&q, p->left);
+        if (p->right) enqueue(&q, p->right);
     }
+    return NULL;
  }
  
  TNODE *dfs(TNODE *root, char val) {
