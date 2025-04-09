@@ -25,6 +25,7 @@
  void bst_insert(BSTNODE **rootp, RECORD data) {
     if (rootp == NULL) {
         rootp = bst_node(data);
+        return;
     }
     if (strcmp(data.name, (*rootp)->data.name) < 0){
         bst_insert(&(*rootp)->left, data);
@@ -35,7 +36,23 @@
   }
  
  void bst_delete(BSTNODE **rootp, char *key) {
- // your code
+    BSTNODE *ptr = bst_search(*rootp, key);
+    BSTNODE *temp;
+
+    if (ptr->left == NULL){
+        temp = ptr;
+        ptr = ptr->right;
+        free(temp);
+    } else if (ptr->right == NULL){
+        temp = ptr;
+        ptr = ptr->left;
+        free(temp);
+    } else {
+        temp = extract_smallest_node(&(ptr)->right);
+        ptr->data = temp->data;
+        free(temp);
+    }
+
  }
  
  
