@@ -70,7 +70,7 @@
  }
  
  TNODE *dfs(TNODE *root, char val) {
-    if(root == NULL) return;
+    if(root == NULL) return NULL;
     STACK s = {0};
     push(&s, root);
     while(s.top){
