@@ -46,7 +46,14 @@
  }
  
  void bforder(TNODE *root) {
- // your code
+    QUEUE q = {0};
+    enqueue(&q, root);
+    while(q.front){
+        TNODE *p = dequeue(&q);
+        printf("%c", p->data);
+        if (p->left) enqueue(&q, p->left);
+        if (p->right) enqueue(&q, p->right);
+    }
  }
  
  TNODE *bfs(TNODE *root, char val) {
