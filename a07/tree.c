@@ -19,7 +19,7 @@
 
     TPROPS result;
     result.order = 1 + lp.order + rp.order;
-    result.height = 1 + lp.height + rp.height;
+    result.height = 1 + (lp.height > rp.height ? lp.height : rp.height);
     return result;
  }
  
