@@ -13,12 +13,14 @@
     if (root == NULL){
         return (TPROPS) {0, -1}; //empty tree
     }
+
     TPROPS lp = tree_property(root->left);
     TPROPS rp = tree_property(root->right);
 
     TPROPS result;
     result.order = 1 + lp.order + rp.order;
     result.height = 1 + lp.height + rp.height;
+    return result;
  }
  
  void preorder(TNODE *root) {
