@@ -10,7 +10,7 @@
  #include "bst.h"
 
  BSTNODE *bst_node(RECORD data);
-BSTNODE *extract_smallest_node(BSTNODE **rootp);
+ BSTNODE *extract_smallest_node(BSTNODE **rootp);
  
  BSTNODE *bst_search(BSTNODE *root, char *key) {
     if (root == NULL) return NULL;
@@ -23,7 +23,14 @@ BSTNODE *extract_smallest_node(BSTNODE **rootp);
  }
  
  void bst_insert(BSTNODE **rootp, RECORD data) {
-    BSTNODE new_node = bst_node(data);
+    if (rootp == NULL) {
+        rootp = bst_node(data);
+    }
+    if (strcmp(data.name, (*rootp)->data.name) < 0){
+        bst_insert(&(*rootp)->left, data);
+    } else {
+        bst_insert(&(*rootp)->right, data);
+    }
     
   }
  
