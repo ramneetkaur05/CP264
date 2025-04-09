@@ -8,11 +8,16 @@
  #include <stdlib.h>
  #include <string.h>
  #include "bst.h"
- 
- 
- BSTNODE *bst_node(RECORD data);
- BSTNODE *extract_smallest_node(BSTNODE **rootp);
- 
+
+ BSTNODE *bst_node(RECORD data) {
+    BSTNODE *np = (BSTNODE *) malloc(sizeof(BSTNODE));
+    if (np) {
+        memcpy(np, &data, sizeof(BSTNODE));
+        np->left = NULL;
+        np->right = NULL;
+    }
+    return np;
+}
  
  BSTNODE *bst_search(BSTNODE *root, char *key) {
  // your code
@@ -26,16 +31,6 @@
  // your code
  }
  
- 
- BSTNODE *bst_node(RECORD data) {
-     BSTNODE *np = (BSTNODE *) malloc(sizeof(BSTNODE));
-     if (np) {
-         memcpy(np, &data, sizeof(BSTNODE));
-         np->left = NULL;
-         np->right = NULL;
-     }
-     return np;
- }
  
  void bst_clean(BSTNODE **rootp) {
      BSTNODE *root = *rootp;
