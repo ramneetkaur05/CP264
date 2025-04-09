@@ -57,7 +57,17 @@
  }
  
  TNODE *bfs(TNODE *root, char val) {
- // your code
+    QUEUE q = {0};
+    enqueue(&q, root);
+    while(q.front){
+        TNODE *p = dequeue(&q);
+        if (p->left->data == val) {
+            return p;
+        }
+        if (p->right->data == val){
+            return p;
+        }
+    }
  }
  
  TNODE *dfs(TNODE *root, char val) {

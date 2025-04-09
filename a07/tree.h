@@ -68,7 +68,7 @@ void bforder(TNODE *root);
  *
  *  @return  - the found node pointer if fount, otherwise NULL
  */
-TNODE *bfs(TNODE *root, char key);
+TNODE *bfs(TNODE *root, char val);
 
 
 /* Search by key using depth-first-search algorithm.
@@ -79,7 +79,7 @@ TNODE *bfs(TNODE *root, char key);
  *
  *  @return  - the found node pointer if fount, otherwise NULL
  */
-TNODE *dfs(TNODE *root, char key);
+TNODE *dfs(TNODE *root, char val);
 
 
 // The following functions are given in a7 help.
