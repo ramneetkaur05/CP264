@@ -24,7 +24,7 @@
  
  void bst_insert(BSTNODE **rootp, RECORD data) {
     if (rootp == NULL) {
-        rootp = bst_node(data);
+        *rootp = bst_node(data);
         return;
     }
     if (strcmp(data.name, (*rootp)->data.name) < 0){
