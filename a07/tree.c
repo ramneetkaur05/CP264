@@ -30,11 +30,19 @@
  }
  
  void inorder(TNODE *root) {
- // your code
+    if (root){
+        inorder(root->left);
+        printf("%c", root->data);
+        inorder(root->right);
+    }
  }
  
  void postorder(TNODE *root) {
- // your code
+    if (root){
+        postorder(root->left);
+        postorder(root->right);
+        printf("%c", root->data);
+    }
  }
  
  void bforder(TNODE *root) {
