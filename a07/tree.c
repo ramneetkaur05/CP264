@@ -70,7 +70,17 @@
  }
  
  TNODE *dfs(TNODE *root, char val) {
- // your code
+    if(root == NULL) return;
+    STACK s = {0};
+    push(&s, root);
+    while(s.top){
+        TNODE *p = pop(&s);
+        if (p->data == val) return p;
+
+        if (p->left) push(&s, p->left);
+        if (p->right) push(&s, p->right);
+    }
+    return NULL;
  }
  
  
