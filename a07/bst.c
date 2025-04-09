@@ -20,7 +20,14 @@
 }
  
  BSTNODE *bst_search(BSTNODE *root, char *key) {
- // your code
+    if (root == NULL) return NULL;
+    else if (key == root->data.name) return root;
+    else if (key < root->data.name){
+        return bst_search(root->left, key);
+    } else {
+        return bst_search(root->right, key);
+    }
+
  }
  
  void bst_insert(BSTNODE **rootp, RECORD data) {
