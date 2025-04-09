@@ -9,15 +9,8 @@
  #include <string.h>
  #include "bst.h"
 
- BSTNODE *bst_node(RECORD data) {
-    BSTNODE *np = (BSTNODE *) malloc(sizeof(BSTNODE));
-    if (np) {
-        memcpy(np, &data, sizeof(BSTNODE));
-        np->left = NULL;
-        np->right = NULL;
-    }
-    return np;
-}
+ BSTNODE *bst_node(RECORD data);
+BSTNODE *extract_smallest_node(BSTNODE **rootp);
  
  BSTNODE *bst_search(BSTNODE *root, char *key) {
     if (root == NULL) return NULL;
@@ -27,12 +20,12 @@
     } else {
         return bst_search(root->right, key);
     }
-
  }
  
  void bst_insert(BSTNODE **rootp, RECORD data) {
- // your code
- }
+    BSTNODE new_node = bst_node(data);
+    
+  }
  
  void bst_delete(BSTNODE **rootp, char *key) {
  // your code
@@ -50,6 +43,16 @@
      }
      *rootp = NULL;
  }
+
+ BSTNODE *bst_node(RECORD data) {
+    BSTNODE *np = (BSTNODE *) malloc(sizeof(BSTNODE));
+    if (np) {
+        memcpy(np, &data, sizeof(BSTNODE));
+        np->left = NULL;
+        np->right = NULL;
+    }
+    return np;
+}
  
  BSTNODE *extract_smallest_node(BSTNODE **rootp) {
      BSTNODE *p = *rootp, *parent = NULL;
