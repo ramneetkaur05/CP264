@@ -30,12 +30,12 @@
  
  int height(AVLNODE *np)
  {
- // your code
+  return np->height;
  }
  
  int balance_factor(AVLNODE *np)
  {
- // your code
+  return height(np->left) - height(np->right);
  }
  
  
@@ -93,10 +93,11 @@
      }
      
      // 2. update height of this ancestor node
-     //root->height = ???
+     root->height = 1 + max(height(root->left), height(root->right));
      
-     // 3. Get the balance factor of this ancestor node to check whether this node became unbalanced
-     //int balance = ???
+     /* 3. Get the balance factor of this ancestor node to 
+     check whether this node became unbalanced */
+     // int balance = 
     
      // 4. rebalance if not balanced
      //???
