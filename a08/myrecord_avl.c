@@ -13,12 +13,15 @@
 #include "myrecord_avl.h"
 
 void avl_merge(AVLNODE **dest_rootp, AVLNODE **source_rootp){
-    //insert all nodes into destination tree, by pre order recursive traversal
-    if (*source_rootp != NULL){
-        avl_merge(dest_rootp, &(*source_rootp)->left);
-        avl_insert(dest_rootp, (*source_rootp)->data);
-        avl_merge(dest_rootp, &(*source_rootp)->right);
-    }
+  if (source_rootp == NULL || *source_rootp == NULL) {
+    return;
+  }
+  //insert all nodes into destination tree, by pre order recursive traversal
+  if (*source_rootp != NULL){
+      avl_merge(dest_rootp, &(*source_rootp)->left);
+      avl_insert(dest_rootp, (*source_rootp)->data);
+      avl_merge(dest_rootp, &(*source_rootp)->right);
+  }
 }
 
 void avlds_merge(AVLDS *dest, AVLDS *source){
@@ -26,14 +29,13 @@ void avlds_merge(AVLDS *dest, AVLDS *source){
 
   int count = dest->count + source->count;
   float mean = (dest->mean*dest->count + source->mean*source->count);
-  float stddev = ((((dest->stddev*dest->stddev*dest->count + dest->mean*dest->mean*dest->count) 
+  float stddev = sqrt(((((dest->stddev*dest->stddev*dest->count + dest->mean*dest->mean*dest->count) 
                   + (source->stddev*source->stddev*source->count + source->mean*source->mean*source->count)) - 
-                  mean*mean)/count);
+                  mean*mean)/count));
 
   dest->count = count;
   dest->mean = mean;
   dest->stddev = stddev;
-
 
 }
 
@@ -74,8 +76,8 @@ void remove_record(AVLDS *tree, char *name) {
       tree->stddev = sqrt( (stddev * stddev + mean * mean) * (count/(count-1.0)) - score*score/(count-1.0) - tree->mean * tree->mean );
     }
     else if (count == 2) {
-        tree->mean = mean*count - score;
-        tree->stddev = 0;
+      tree->mean = (mean * count - score) / (count - 1.0);
+      tree->stddev = 0;
    }
    else {
         tree->mean = 0;
