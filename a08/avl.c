@@ -41,12 +41,33 @@
  
  AVLNODE *rotate_left(AVLNODE *np)
  {
- // your code
+  AVLNODE *parent = np->right;
+  AVLNODE *child = np->left;
+
+  // rotation
+  parent->left = np;
+  np->right = child;
+
+  // updating the heights
+  np->height = 1 + max(height(np->left), height(np->right));
+  parent->height = 1 + max(height(parent->left), height(parent->right));
+
+  return parent;
  }
  
- AVLNODE *rotate_right(AVLNODE *root)
- {
- // your code
+ AVLNODE *rotate_right(AVLNODE *root){
+  AVLNODE *child = root->left;
+  AVLNODE *gran_child = root->right;
+
+  // rotation
+  child->right = root;
+  root->left = gran_child;
+
+  // updating the heights
+  root->height = 1 + max(height(root->left), height(root->right));
+  child->height = 1 + max(height(child->left), height(child->right));
+
+  return child;
  }
  
  AVLNODE *extract_smallest_node(AVLNODE **rootp) {
@@ -97,10 +118,19 @@
      
      /* 3. Get the balance factor of this ancestor node to 
      check whether this node became unbalanced */
-     // int balance = 
+     int balance = balance_factor(root);
     
      // 4. rebalance if not balanced
-     //???
+     if (balance == 2 && balance_factor(root->left) >= 0) return rotate_right(root);
+     else if (balance  == 2 && balance_factor(root->left) < 0){
+      root->left = rotate_left(root->left);
+      return rotate_right(root);
+     }
+     else if (balance == -2 && balance_factor(root->right) <= 0) return rotate_left(root);
+     else if (balance == -2 && balance_factor(root->right) > 0){
+      root->right = rotate_right(root->right);
+      return rotate_left(root);
+     }
    }
  }
  
