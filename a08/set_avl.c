@@ -14,7 +14,7 @@
  
  int set_contain(SET *s, char *e){
     AVLNODE **root = s->root;
-    return avl_search(*root, e)? 1:0;
+    return (avl_search(*root, e))? 1:0;
  }
  
  void set_add(SET *s, char *e){
