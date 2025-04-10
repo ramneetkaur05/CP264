@@ -118,7 +118,7 @@ void display_inorder_line(AVLNODE *root) {
 	if (root) {
 		if (root->left)
 			display_inorder_line(root->left);
-		printf("%s", root->data);
+		printf("%s", root->data.name);
 		if (root->right)
 			display_inorder_line(root->right);
 	}
