@@ -23,11 +23,13 @@ void avl_merge(AVLNODE **dest_rootp, AVLNODE **source_rootp){
 
 void avlds_merge(AVLDS *dest, AVLDS *source){
   avl_merge(&dest->root, &source->root);
+
   int count = dest->count + source->count;
   float mean = (dest->mean*dest->count + source->mean*source->count);
   float stddev = ((((dest->stddev*dest->stddev*dest->count + dest->mean*dest->mean*dest->count) 
                   + (source->stddev*source->stddev*source->count + source->mean*source->mean*source->count)) - 
                   mean*mean)/count);
+
   dest->count = count;
   dest->mean = mean;
   dest->stddev = stddev;
