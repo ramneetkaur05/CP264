@@ -13,29 +13,27 @@
  }
  
  int set_contain(SET *s, char *e){
-    AVLNODE **root = s->root;
-    return (avl_search(*root, e))? 1:0;
+    AVLNODE *np = avl_search(s->root, e);
+    return np != NULL ? 1:0;
  }
  
  void set_add(SET *s, char *e){
-    AVLNODE **root = s->root;
     if (set_contain(s,e) == 0){
         RECORD r = {0};
         strcpy(r.name, e);
-        avl_insert(*root, r);
+        avl_insert(&s->root, r);
         s->size++;
     }
  }
  
  void set_remove(SET *s, char *e){
-    AVLNODE **root = s->root;
     if (set_contain(s,e) == 0){
-        avl_delete(*root, e);
+        avl_delete(&s->root, e);
         s->size--;
     }
  }
  
  void set_clean(SET *s){
-    AVLNODE **root = s->root;
-    avl_clean(*root);
+    avl_clean(&s->root);
+    s->size = 0;
  }   
