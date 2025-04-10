@@ -1,5 +1,7 @@
 /*
- * your program signature
+ * file: avl.h
+ * author: Ramneet Kaur Pannu
+ * date: 9/04/25
  */ 
  
  #ifndef AVL_H

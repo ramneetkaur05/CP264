@@ -1,5 +1,7 @@
 /*
- * your program signature
+ * file: avl.c
+ * author: Ramneet Kaur Pannu
+ * date: 9/04/25
  */ 
  
  #include<stdio.h>
@@ -192,7 +194,15 @@
  }
  
  AVLNODE *avl_search(AVLNODE *root, char *name) {
- // your code
+  if (root == NULL) return NULL;
+
+  else if (root->data.name == name) return root;
+  else if (name < root->data.name){
+    return avl_search(root->left, name);
+  } else {
+    return avl_search(root->right, name);
+  }
+
  }
  
  
