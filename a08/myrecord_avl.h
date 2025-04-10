@@ -1,5 +1,5 @@
 /*
- * file: myrecord_avl.c
+ * file: myrecord_avl.h
  * author: Ramneet Kaur Pannu
  * date: 10/04/25
  */ 
