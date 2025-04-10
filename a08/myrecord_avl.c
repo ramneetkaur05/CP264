@@ -12,14 +12,19 @@
 #include "avl.h"
 #include "myrecord_avl.h"
 
-void avl_merge(AVLNODE **dest_rootp, AVLNODE **source_rootp)
-{
-// your code
+void avl_merge(AVLNODE **dest_rootp, AVLNODE **source_rootp){
+    //insert all nodes into destination tree, by pre order recursive traversal
+    if (*source_rootp != NULL){
+        avl_merge(dest_rootp, &(*source_rootp)->left);
+        avl_insert(dest_rootp, (*source_rootp)->data);
+        avl_merge(dest_rootp, &(*source_rootp)->right);
+    }
 }
 
-void avlds_merge(AVLDS *dest, AVLDS *source)
-{
-// your code
+void avlds_merge(AVLDS *dest, AVLDS *source){
+  avl_merge(&dest->root, &source->root);
+
+  
 }
 
 
