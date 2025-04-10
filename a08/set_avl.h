@@ -1,5 +1,7 @@
 /*
- * your program signature
+ * file: set_avl.h
+ * author: Ramneet Kaur Pannu
+ * date: 10/04/25
  */ 
 
  #ifndef SET_AVL_H
@@ -13,7 +15,7 @@ typedef struct {
     AVLNODE *root;
   } SET;
 
-  
+
  /**
  * returns the number of elements in the set
  */
