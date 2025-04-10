@@ -123,15 +123,15 @@
      int balance = balance_factor(root);
     
      // 4. rebalance if not balanced
-     if (balance == 2 && balance_factor(root->left) >= 0) return rotate_right(root);
+     if (balance == 2 && balance_factor(root->left) >= 0) rotate_right(root);
      else if (balance  == 2 && balance_factor(root->left) < 0){
       root->left = rotate_left(root->left);
-      return rotate_right(root);
+      rotate_right(root);
      }
-     else if (balance == -2 && balance_factor(root->right) <= 0) return rotate_left(root);
+     else if (balance == -2 && balance_factor(root->right) <= 0) rotate_left(root);
      else if (balance == -2 && balance_factor(root->right) > 0){
       root->right = rotate_right(root->right);
-      return rotate_left(root);
+      rotate_left(root);
      }
    }
  }
@@ -180,15 +180,15 @@
    int balance = balance_factor(root);
  
    // STEP 4: rebalance if not balanced
-   if (balance == 2 && balance_factor(root->left) >= 0) return rotate_right(root);
+   if (balance == 2 && balance_factor(root->left) >= 0) rotate_right(root);
    else if (balance  == 2 && balance_factor(root->left) < 0){
     root->left = rotate_left(root->left);
-    return rotate_right(root);
+    rotate_right(root);
    }
-   else if (balance == -2 && balance_factor(root->right) <= 0) return rotate_left(root);
+   else if (balance == -2 && balance_factor(root->right) <= 0) rotate_left(root);
    else if (balance == -2 && balance_factor(root->right) > 0){
     root->right = rotate_right(root->right);
-    return rotate_left(root);
+    rotate_left(root);
    }
  
  }
