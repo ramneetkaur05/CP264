@@ -1,5 +1,7 @@
 /*
- * your program signature
+ * file: hash.c
+ * author: ramneet
+ * date: 11/04/25
  */ 
 
  #include <stdio.h>
@@ -21,11 +23,48 @@
   }
  
  int hashtable_insert(HASHTABLE *ht, DATA data) {
- // your code
- }
+    int i = hash(data.name, ht->size);
+    HNODE *ptr = ht->hna[i];
+
+    while (ptr){
+        if (strcmp(ptr->data.name, data.name) == 0){
+            ptr->data.value = data.value;
+            return 0;
+        }
+        ptr = ptr->next;
+    }
+
+    // if not matched
+    HNODE *new_node = (HNODE*) malloc(sizeof(HNODE));
+    new_node->data = data;
+    new_node->next = ht->hna[i];
+    ht->hna[i] = new_node;
+    ht->count++;
+    return 1;
+  }
  
  int hashtable_delete(HASHTABLE *ht, char *name) {
- // your code
+    int i = hash(name, ht->size);
+    HNODE *ptr = ht->hna[i];
+    HNODE *prev = NULL;
+
+    while (ptr){
+        if (strcmp(ptr->data.name, name) == 0){
+            if (prev == NULL){
+                ht->hna[i] = ptr->next;
+            } else {
+                prev->next = ptr->next;
+            }
+            free(ptr);
+            ht->count--;
+            return 1;
+        }
+        prev = ptr;
+        ptr = ptr->next;
+    }
+    return 0;
+
+
  }
  
  

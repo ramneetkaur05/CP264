@@ -1,9 +1,12 @@
 /*
- * your program signature
+ * file: hash.h
+ * author: ramneet
+ * date: 11/04/25
  */ 
+
+
 #ifndef HASH_H
 #define HASH_H
-
 
 /* Define structure DATA type to represent name and value as key value pair.
  * char name[20] - name string, used as key for hash table
