@@ -138,7 +138,7 @@
              }
          }
          printf("enter a statement: e.g. a=(2+3)*2, or all to display hashtable, or quit to exit\n");
-         gets(line);
+         fgetc(line);
          if (strcmp(line, "quit") == 0)
              break;
          
