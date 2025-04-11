@@ -76,7 +76,7 @@
  int evaluate_infix_symbol(HASHTABLE *ht, char *infixstr) {
     QUEUE queue = infix_to_postfix_symbol(ht, infixstr);
     int result = evaluate_postfix(queue);
-    clean(&queue);
+    clean_queue(&queue);
     return result;
  }
  
