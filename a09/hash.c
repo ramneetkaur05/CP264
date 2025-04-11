@@ -8,8 +8,17 @@
  #include "hash.h"
  
  HNODE *hashtable_search(HASHTABLE *ht, char *name) {
- // your code
- }
+    int i = hash(name, ht->size);
+    HNODE *ptr = ht->hna[i];
+
+    while (ptr){
+        if (strcmp(ptr->data.name, name) == 0){
+            return ptr;
+        }
+        ptr = ptr->next;
+    }
+    return NULL;
+  }
  
  int hashtable_insert(HASHTABLE *ht, DATA data) {
  // your code
