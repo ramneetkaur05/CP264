@@ -72,17 +72,19 @@
  
  void heap_insert(HEAP *heap, HEAPDATA new_node)
  {
- // your code
+    heap->hda[heap->size] = new_node;
+    heapify_up(heap, heap->size);
+    heap->size++;
  }
  
  HEAPDATA heap_find_min(HEAP *heap)
  {
- // your code
- }
+    return heap->hda[0];
+  }
  
  HEAPDATA heap_extract_min(HEAP *heap)
  {
- // your code
+    
  }
  
  int heap_change_key(HEAP *heap, int index, KEYTYPE new_key)
