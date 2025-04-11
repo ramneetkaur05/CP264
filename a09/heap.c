@@ -27,12 +27,47 @@
  
  // you may add this function to be used other functions.
  int heapify_up(HEAPDATA *hda, int index) {
- // your code
+    if (index <= 0) return index;
+
+    int parent = (index - 1)/2;
+
+    if (hda[index].key < hda[parent].key){
+        // swpa the nodes
+        HEAPDATA temp = hda[index];
+        hda[index] = hda[parent];
+        hda[parent] = temp;
+
+        // continue heapifying
+        return heapify_up(hda, parent);
+    }
+    return index;
  }
  
  // you may add this function to be used other functions.
  int heapify_down(HEAPDATA *hda, int n, int index) {
- // your code
+    int smallest = index;
+    int left = 2*index + 1;
+    int right = 2*index + 2;
+
+    // find the smallest 
+    if (left < n && hda[left].key < hda[smallest].key){
+        smallest = left;
+    }
+    if (right < n && hda[right].key < hda[smallest].key){
+        smallest = right;
+    }
+
+    // if it snot the current infdes, keep heapifying down
+    if (smallest != index){
+        HEAPDATA temp = hda[index];
+        hda[index] = hda[smallest];
+        hda[smallest] = temp;
+
+        // conotinue heapifying down
+        return heapify_down(hda, n, smallest);
+    }
+    return index;
+
  }
  
  void heap_insert(HEAP *heap, HEAPDATA new_node)
