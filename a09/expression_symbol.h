@@ -1,5 +1,7 @@
 /*
- * your program signature
+ * file: expression_symbol.h
+ * author: ramneet
+ * date: 11/04/25
  */ 
  
  #ifndef EXPRESSION_SYMBOL_H

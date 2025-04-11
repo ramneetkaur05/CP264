@@ -1,5 +1,7 @@
 /*
- * your program signature
+ * file: expression_symbol.c
+ * author: ramneet
+ * date: 11/04/25
  */ 
  
  #include <stdio.h>
@@ -56,7 +58,10 @@
        *(sp+1) = '\0';
        
       // your code, get the value of the symobol from the hash table, then enqueue the value
-      
+      HNODE *hnp = hashtable_search(ht, symbol);
+      if (hnp){
+        enqueue(&queue, new_node(hnp->data.value, 0));
+      }
      }
      p++;
    }
@@ -69,7 +74,10 @@
  }
  
  int evaluate_infix_symbol(HASHTABLE *ht, char *infixstr) {
- // your code
+    QUEUE queue = infix_to_postfix_symbol(ht, infixstr);
+    int result = evaluate_postfix(queue);
+    clean(&queue);
+    return result;
  }
  
  
