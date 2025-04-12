@@ -47,8 +47,10 @@ typedef struct graph {
 /* create and return a new adjacent list graph of order n */
 GRAPH *new_graph(int n);
 
-/* Add edge (from, to, weight) to a graph. If edge (from, to) exists, update its weight by the new weight,
- * This indicates that if (from, to) does not exist, the new edge will be added to the end of the linked list.  
+/* Add edge (from, to, weight) to a graph. 
+ * If edge (from, to) exists, update its weight by the new weight,
+ * This indicates that if (from, to) does not exist, 
+ * the new edge will be added to the end of the linked list.  
 */
 void insert_edge_graph(GRAPH *g, int from, int to, int weight);
 

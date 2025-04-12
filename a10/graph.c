@@ -27,8 +27,34 @@
  }
  
  void insert_edge_graph(GRAPH *g, int from, int to, int weight) {
- // your code
- }
+
+    ADJNODE *ptr = g->nodes[from]->neighbor;
+    ADJNODE *prev = NULL;
+
+    while (ptr != NULL){
+        if (ptr->nid == to){
+            // edge exsists, update wheight
+            ptr->weight = weight;
+            return;
+        }
+        prev = ptr;
+        ptr = ptr->next;
+    }
+
+    // node doesn't exsist
+    ADJNODE *new_node = (ADJNODE*)malloc(sizeof(ADJNODE));
+    new_node->nid = to;
+    new_node->weight = weight;
+    new_node->next = NULL;
+
+    // add to the end of the list
+    if (prev == NULL){
+        g->nodes[from]->neighbor = new_node;
+    } else {
+        prev->next = new_node;
+    }
+    g->size++; // increase size
+  }
  
  void delete_edge_graph(GRAPH *g, int from, int to) {
  // your code
