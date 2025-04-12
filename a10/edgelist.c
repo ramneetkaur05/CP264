@@ -48,7 +48,25 @@
  }
  
  void delete_edge(EDGELIST *g, int from, int to) {
- // your code
+    EDGENODE *ptr = g->start, *prev = NULL;
+
+    while (ptr!= NULL){
+        if (ptr->from == from && ptr->to == to) {
+            if (prev = NULL){
+                g->start = ptr->next;
+            } else {
+                prev->next = ptr->next;
+            }
+            if(ptr == g->end){
+                g->end = prev;
+            }
+            free(ptr);
+            g->size--;
+            return;
+        }
+        prev = ptr;
+        ptr = ptr->next;
+    }
  }
  
  int weight_edgelist(EDGELIST *g) {
