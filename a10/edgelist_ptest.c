@@ -110,7 +110,7 @@ void test_weight_edgelist() {
 	for (int i=0; i<n; i++) {
 		insert_edge_end(elg, tests[i].from, tests[i].to, tests[i].weight);
 	}
-	printf("edgelist graph: ", weight_edgelist(elg));
+	printf("edgelist graph: %d", weight_edgelist(elg));
 	display_edgelist(elg);
 	printf("\n");
 	printf("%s(): %d", "weight_edgelis", weight_edgelist(elg));
