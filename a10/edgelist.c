@@ -70,8 +70,14 @@
  }
  
  int weight_edgelist(EDGELIST *g) {
- // your code
- }
+    int weight = 0;
+    EDGENODE *ptr = g->start;
+    while (ptr!= NULL){
+        weight += ptr->weight;
+        ptr->next;
+    }
+    return weight;
+  }
  
  void clean_edgelist(EDGELIST **gp) {
      EDGELIST *g = *gp;
