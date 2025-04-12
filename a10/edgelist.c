@@ -76,6 +76,7 @@
         weight += ptr->weight;
         ptr->next;
     }
+    free(ptr);
     return weight;
   }
  
