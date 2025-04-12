@@ -17,11 +17,34 @@
  }
  
  void insert_edge_end(EDGELIST *g, int from, int to, int weight) {
- // your code
- }
+    EDGENODE *new_node = (EDGENODE*)malloc(sizeof(EDGENODE));
+    new_node->from = from;
+    new_node->to = to;
+    new_node->weight = weight;
+    new_node->next = NULL;
+
+    if(g->start == NULL){
+        g->start = new_node;
+        g->end = new_node;
+    } else {
+        g->end->next = new_node;
+        g->end = new_node;
+    }
+    g->size++;
+  }
  
  void insert_edge_start(EDGELIST *g, int from, int to, int weight) {
- // your code;
+    EDGENODE *new_node = (EDGENODE*)malloc(sizeof(EDGENODE));
+    new_node->from = from;
+    new_node->to = to;
+    new_node->weight = weight;
+    new_node->next = g->start;
+    g->start = new_node;
+
+    if(g->end == NULL){
+        g->end = new_node;
+    }
+    g->size++;
  }
  
  void delete_edge(EDGELIST *g, int from, int to) {
